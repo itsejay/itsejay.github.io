@@ -45,17 +45,27 @@
     align-items: center; 
     justify-content: center; 
     min-height: 380px; /* Taller cards for better proportion */
+
+word-break: break-all; /* Backup for any overflow */
+    overflow: hidden; /* Prevents anything spilling out */
 }
 
     
     .wallet-card h3 { margin-top: 0; }
     
 .address { 
-    font-size: 1em; /* Slightly bigger on desktop */
-    margin: 20px 0; 
-    padding: 15px; 
+    font-family: monospace; 
+    font-size: 0.95em; /* Slightly smaller for long ones */
+    background: #333; 
+    padding: 12px; 
+    border-radius: 8px; 
+    margin: 15px 0; 
+    display: block; 
+    word-break: break-all; /* Forces break on any character — fixes long no-space strings */
+    overflow-wrap: anywhere; 
+    max-width: 100%; /* Keeps it inside card */
+    line-height: 1.4; /* Better readability when wrapped */
 }
-
 
     .wallet-card img { 
     width: 220px; 
@@ -84,6 +94,11 @@
         header { padding: 60px 15px; }
         section { padding: 40px 15px; }
         .address { font-size: 0.85em; }
+
+.address { 
+    font-size: 0.85em; 
+    padding: 10px; 
+}
     }
 </style>
 
