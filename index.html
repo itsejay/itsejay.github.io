@@ -5,26 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Itsejay Crypto Hustle - Tanzania to Greatness</title>
     <style>
-    body { margin:0; font-family: Arial, sans-serif; background: #0a0a0a; color: #fff; text-align: center; }
-    header { background: linear-gradient(135deg, #00ff88, #00aaff); padding: 80px 20px; }
-    h1 { font-size: 2.5em; margin: 0; line-height: 1.2; } /* Smaller on mobile auto, tighter line */
-    h2 { color: #00ff88; }
-    section { padding: 60px 20px; max-width: 1200px; margin: auto; }
-    .bio, .vision { background: #111; margin: 20px auto; padding: 30px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,255,136,0.3); }
+    body { margin:0; font-family: Arial, sans-serif; background: #0a0a0a; color: #fff; text-align: center; overflow-x: hidden; }
+    header { 
+        background: linear-gradient(135deg, #00ff88, #00aaff, #00ff88); 
+        background-size: 200% 200%; 
+        animation: gradientShift 8s ease infinite; 
+        padding: 80px 20px; 
+    }
+    @keyframes gradientShift { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
+    
+    h1 { font-size: 2.5em; margin: 0; line-height: 1.2; text-shadow: 0 0 20px rgba(0,255,136,0.8); animation: neonGlow 2s ease-in-out infinite alternate; }
+    @keyframes neonGlow { from {text-shadow: 0 0 10px rgba(0,255,136,0.5);} to {text-shadow: 0 0 30px rgba(0,255,136,1);} }
+    
+    h2 { color: #00ff88; text-shadow: 0 0 10px rgba(0,255,136,0.6); }
+    
+    section { padding: 60px 20px; max-width: 1200px; margin: auto; opacity: 0; transform: translateY(50px); transition: opacity 1s ease, transform 1s ease; }
+    section.visible { opacity: 1; transform: translateY(0); } /* Will activate with small JS below */
+    
+    .bio, .vision { background: #111; margin: 20px auto; padding: 30px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,255,136,0.3); transition: box-shadow 0.5s; }
+    .bio:hover, .vision:hover { box-shadow: 0 0 40px rgba(0,255,136,0.6); }
+    
     .wallets { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .wallet-card { background: #222; padding: 20px; border-radius: 10px; border: 1px solid #00ff88; word-wrap: break-word; overflow-wrap: break-word; } /* Key fix: Wrap long text */
+    .wallet-card { 
+        background: #222; padding: 20px; border-radius: 10px; border: 1px solid #00ff88; 
+        word-wrap: break-word; overflow-wrap: break-word; 
+        transition: transform 0.3s, box-shadow 0.5s; 
+        animation: pulseGlow 4s ease-in-out infinite; 
+    }
+    .wallet-card:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(0,255,136,0.8); }
+    @keyframes pulseGlow { 0%,100% {box-shadow: 0 0 10px rgba(0,255,136,0.3);} 50% {box-shadow: 0 0 25px rgba(0,255,136,0.6);} }
+    
     .wallet-card h3 { margin-top: 0; }
-    .address { font-family: monospace; font-size: 0.9em; background: #333; padding: 10px; border-radius: 8px; margin: 15px 0; display: block; } /* Monospace for addresses, smaller, padded */
-    .wallet-card img { width: 200px; height: 200px; margin: 15px auto; display: block; } /* Center QRs */
-    button, a.btn { background: #00ff88; color: #000; padding: 15px 30px; border: none; border-radius: 50px; font-size: 1.2em; text-decoration: none; display: inline-block; margin: 20px; }
+    .address { font-family: monospace; font-size: 0.9em; background: #333; padding: 10px; border-radius: 8px; margin: 15px 0; display: block; }
+    .wallet-card img { width: 200px; height: 200px; margin: 15px auto; display: block; border-radius: 10px; border: 2px solid #00ff88; box-shadow: 0 0 15px rgba(0,255,136,0.5); }
+    
+    button, a.btn { 
+        background: #00ff88; color: #000; padding: 15px 30px; border: none; border-radius: 50px; 
+        font-size: 1.2em; text-decoration: none; display: inline-block; margin: 20px; 
+        transition: all 0.3s; box-shadow: 0 0 20px rgba(0,255,136,0.6); 
+        animation: buttonPulse 2s infinite; 
+    }
+    a.btn:hover { transform: scale(1.1); box-shadow: 0 0 40px rgba(0,255,136,1); }
+    @keyframes buttonPulse { 0% {box-shadow: 0 0 20px rgba(0,255,136,0.6);} 50% {box-shadow: 0 0 35px rgba(0,255,136,0.9);} 100% {box-shadow: 0 0 20px rgba(0,255,136,0.6);} }
+    
     footer { background: #000; padding: 20px; }
+    
     @media (max-width: 768px) { 
-        h1 { font-size: 2em; } /* Even smaller header text on small phones */
+        h1 { font-size: 2em; }
         header { padding: 60px 15px; }
         section { padding: 40px 15px; }
-        .address { font-size: 0.85em; } /* Smaller addresses on mobile */
+        .address { font-size: 0.85em; }
     }
 </style>
+
+
 </head>
 <body>
     <header>
@@ -112,5 +146,19 @@
     <footer>
         <p>Thanks for visiting, CT fam! God's grace 🙏 | © 2025 Itsejay Hustle</p>
     </footer>
+
+<script>
+    // Simple fade-in on scroll
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    sections.forEach(section => observer.observe(section));
+</script>
 </body>
           </html>
