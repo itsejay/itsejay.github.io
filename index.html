@@ -5,19 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Itsejay Crypto Hustle - Tanzania to Greatness</title>
     <style>
-        body { margin:0; font-family: Arial, sans-serif; background: #0a0a0a; color: #fff; text-align: center; }
-        header { background: linear-gradient(135deg, #00ff88, #00aaff); padding: 80px 20px; }
-        h1 { font-size: 3em; margin: 0; }
-        h2 { color: #00ff88; }
-        section { padding: 60px 20px; max-width: 1200px; margin: auto; }
-        .bio, .vision { background: #111; margin: 20px auto; padding: 30px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,255,136,0.3); }
-        .wallets { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .wallet-card { background: #222; padding: 20px; border-radius: 10px; border: 1px solid #00ff88; }
-        .wallet-card img { width: 200px; height: 200px; }
-        button, a.btn { background: #00ff88; color: #000; padding: 15px 30px; border: none; border-radius: 50px; font-size: 1.2em; text-decoration: none; display: inline-block; margin: 20px; }
-        footer { background: #000; padding: 20px; }
-        @media (max-width: 768px) { h1 { font-size: 2.2em; } }
-    </style>
+    body { margin:0; font-family: Arial, sans-serif; background: #0a0a0a; color: #fff; text-align: center; }
+    header { background: linear-gradient(135deg, #00ff88, #00aaff); padding: 80px 20px; }
+    h1 { font-size: 2.5em; margin: 0; line-height: 1.2; } /* Smaller on mobile auto, tighter line */
+    h2 { color: #00ff88; }
+    section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+    .bio, .vision { background: #111; margin: 20px auto; padding: 30px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,255,136,0.3); }
+    .wallets { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .wallet-card { background: #222; padding: 20px; border-radius: 10px; border: 1px solid #00ff88; word-wrap: break-word; overflow-wrap: break-word; } /* Key fix: Wrap long text */
+    .wallet-card h3 { margin-top: 0; }
+    .address { font-family: monospace; font-size: 0.9em; background: #333; padding: 10px; border-radius: 8px; margin: 15px 0; display: block; } /* Monospace for addresses, smaller, padded */
+    .wallet-card img { width: 200px; height: 200px; margin: 15px auto; display: block; } /* Center QRs */
+    button, a.btn { background: #00ff88; color: #000; padding: 15px 30px; border: none; border-radius: 50px; font-size: 1.2em; text-decoration: none; display: inline-block; margin: 20px; }
+    footer { background: #000; padding: 20px; }
+    @media (max-width: 768px) { 
+        h1 { font-size: 2em; } /* Even smaller header text on small phones */
+        header { padding: 60px 15px; }
+        section { padding: 40px 15px; }
+        .address { font-size: 0.85em; } /* Smaller addresses on mobile */
+    }
+</style>
 </head>
 <body>
     <header>
