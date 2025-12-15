@@ -24,21 +24,50 @@
     
     .bio, .vision { background: #111; margin: 20px auto; padding: 30px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,255,136,0.3); transition: box-shadow 0.5s; }
     .bio:hover, .vision:hover { box-shadow: 0 0 40px rgba(0,255,136,0.6); }
-    
-    .wallets { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .wallet-card { 
-        background: #222; padding: 20px; border-radius: 10px; border: 1px solid #00ff88; 
-        word-wrap: break-word; overflow-wrap: break-word; 
-        transition: transform 0.3s, box-shadow 0.5s; 
-        animation: pulseGlow 4s ease-in-out infinite; 
-    }
-    .wallet-card:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(0,255,136,0.8); }
-    @keyframes pulseGlow { 0%,100% {box-shadow: 0 0 10px rgba(0,255,136,0.3);} 50% {box-shadow: 0 0 25px rgba(0,255,136,0.6);} }
+
+.wallets { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Wider min = more columns on desktop */
+    gap: 30px; /* Bigger gaps between cards */
+    padding: 20px; /* Extra space around whole section */
+}
+
+.wallet-card { 
+    background: #222; 
+    padding: 30px; /* More internal space */
+    border-radius: 15px; 
+    border: 1px solid #00ff88; 
+    word-wrap: break-word; overflow-wrap: break-word; 
+    transition: transform 0.3s, box-shadow 0.5s; 
+    animation: pulseGlow 4s ease-in-out infinite; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 380px; /* Taller cards for better proportion */
+}
+
     
     .wallet-card h3 { margin-top: 0; }
-    .address { font-family: monospace; font-size: 0.9em; background: #333; padding: 10px; border-radius: 8px; margin: 15px 0; display: block; }
-    .wallet-card img { width: 200px; height: 200px; margin: 15px auto; display: block; border-radius: 10px; border: 2px solid #00ff88; box-shadow: 0 0 15px rgba(0,255,136,0.5); }
     
+.address { 
+    font-size: 1em; /* Slightly bigger on desktop */
+    margin: 20px 0; 
+    padding: 15px; 
+}
+
+
+    .wallet-card img { 
+    width: 220px; 
+    height: 220px; 
+    margin: 20px auto; 
+    display: block; 
+    border-radius: 15px; 
+    border: 3px solid #00ff88; 
+    box-shadow: 0 0 20px rgba(0,255,136,0.7); 
+}
+
+
     button, a.btn { 
         background: #00ff88; color: #000; padding: 15px 30px; border: none; border-radius: 50px; 
         font-size: 1.2em; text-decoration: none; display: inline-block; margin: 20px; 
